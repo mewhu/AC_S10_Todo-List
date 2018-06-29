@@ -1,0 +1,39 @@
+<div class="container">
+  <h1 class="text-center">Mew's Todo-List</h1>
+
+  <%= link_to new_todo_path do %>
+    <h3 class="text-center"><span class="glyphicon glyphicon-plus-sign"></span> Add New Todo Item</h3>
+  <% end %>
+
+  <table class="table table-striped table-condensed">
+    <tr>
+      <td><span class="glyphicon glyphicon-ok-circle"></span> Done</td>
+      <td><span class="glyphicon glyphicon-pushpin"></span> Name</td>
+      <td><span class="glyphicon glyphicon-calendar"></span> Deadline</td>
+      <td><span class="glyphicon glyphicon-edit"></span> Edit</td>
+      <td><span class="glyphicon glyphicon-info-sign"></span> Status</td>
+      <td><span class="glyphicon glyphicon-trash"></span> Destroy</td>
+    </tr>
+    <% @todos.each do |todo| %>
+    <tr>
+        <td>
+          <%= link_to  %>
+        </td>
+
+        <td><%= todo.name %></td>
+
+        <td><%= todo.due_date.to_date %></td>
+
+        <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
+
+        <td>
+          <%= link_to edit_todo_path(todo) do%>
+            <span class="glyphicon glyphicon-edit"></span>
+          <% end %>        
+        </td>
+
+        <td><%= link_to 'Destroy', todo_path(todo), method: :delete, data:{ confirm: "Are you sure?"} %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
