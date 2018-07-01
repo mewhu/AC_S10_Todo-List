@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-  before_action :target_todo, :only => [:show, :edit, :update, :destroy]
+  before_action :target_todo, :only => [:show, :edit, :update, :destroy, :done]
   def index
     @todos = Todo.all
   end
@@ -37,7 +37,9 @@ class TodosController < ApplicationController
   end
 
   def done
-    
+    @todo.is_done = !(@todo.is_done)
+    @todo.save
+    redirect_to todos_path
   end
 
   private
